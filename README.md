@@ -1,2 +1,4 @@
 # Microservices-Project-1
-Microservices first project with NodeJS
+First project related to microservices architecture simulating a simple posting application which allows comments on the posts.
+
+TBD: Attach high level overview of the application diagram.
