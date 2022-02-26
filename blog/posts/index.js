@@ -1,9 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { randomBytes } = require('crypto');
+const cors = require('cors');
 
 const app = express();
+
+// Acting as middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 
 // Object for storing locally the posts
