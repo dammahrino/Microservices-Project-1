@@ -25,6 +25,8 @@ app.post('/posts', (request, response) => {
 
     posts[id] = { id, title };
 
+    console.log("Received Create Post Request");
+
     response.status(201).send(posts[id]);
 });
 

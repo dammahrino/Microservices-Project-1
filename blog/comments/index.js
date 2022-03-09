@@ -27,6 +27,8 @@ app.post('/posts/:id/comments', (request, response) => {
 
     commentsByPostId[request.params.id] = comments;
 
+    console.log("Received Create Comment Request");
+
     response.status(201).send(comments);
 });
 
