@@ -8,7 +8,7 @@ const PostList = () => {
 
     const fetchPosts = async () => {
         // Retrieve the posts created
-        const response = await axios.get('http://localhost:4000/posts');
+        const response = await axios.get('http://localhost:4002/posts');
 
         // Updating the post list state
         setPosts(response.data);
@@ -36,7 +36,7 @@ const PostList = () => {
             >
                 <div className="card-body">
                     <h3>{post.title}</h3>
-                    <CommentList postId={post.id} />
+                    <CommentList postComments={post.comments}/>
                     <hr />
                     <CommentCreate postId={post.id}/>
                 </div>

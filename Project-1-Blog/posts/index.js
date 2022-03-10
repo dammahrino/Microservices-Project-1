@@ -40,7 +40,7 @@ app.post('/posts', async (request, response) => {
 
 // Adding Post request handler
 app.post('/events', (request, response) => {
-    console.log('Received event ', request.body.type);
+    console.log('Received event', request.body.type);
 
     response.send({}).status(200);
 });

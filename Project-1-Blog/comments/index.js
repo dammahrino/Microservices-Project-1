@@ -42,7 +42,7 @@ app.post('/posts/:id/comments', async (request, response) => {
 
 // Adding POST request handler
 app.post('/events', (request, response) => {
-    console.log('Received event ', request.body.type);
+    console.log('Received event', request.body.type);
 
     response.send({}).status(200);
 });

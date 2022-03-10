@@ -45,6 +45,7 @@ app.post('/events', (request, response) => {
         post.comments.push({ id, content});
     }
 
+    console.log(posts)
     response.status(201).send({});
 });
 
