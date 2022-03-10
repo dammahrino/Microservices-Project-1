@@ -8,12 +8,44 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/posts', (request, response) => {
+/**
+ * posts = {
+ *   '87wehifu': {
+ *       id: '87wehifu',
+ *       title: 'Post Title',
+ *       comments: [
+ *          { id: '87gwefi', content: 'Comments' }
+ *       ]
+ *    }
+ * }
+ */
 
+const posts = {};
+
+app.get('/posts', (request, response) => {
+    response.status(200).send(posts);
 });
 
 app.post('/events', (request, response) => {
+    const { type, data } = request.body;
 
+    if (type === 'PostCreated') {
+        const { id, title } = data;
+        posts[id] = {
+            id, 
+            title,
+            comments: []
+        }
+    }
+
+    if (type === 'CommentCreated') {
+        const { id, content, postId } = data;
+        
+        const post = posts[postId];
+        post.comments.push({ id, content});
+    }
+
+    response.status(201).send({});
 });
 
 app.listen(query_service_port, () => {
