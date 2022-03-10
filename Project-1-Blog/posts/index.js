@@ -48,5 +48,5 @@ app.post('/events', (request, response) => {
 
 // Set the port in which the application will be listening.
 app.listen(4000, () => {
-    console.log('Listening on 4000.')
+    console.log('[POSTS_SERVICE] Listening on 4000.')
 })

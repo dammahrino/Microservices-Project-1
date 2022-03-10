@@ -50,5 +50,5 @@ app.post('/events', (request, response) => {
 });
 
 app.listen(query_service_port, () => {
-    console.log('Listening on', query_service_port);
+    console.log('[QUERY_SERVICE] Listening on', query_service_port);
 })

@@ -21,5 +21,5 @@ app.post('/events', (request, response) => {
 });
 
 app.listen(events_bus_port, () => {
-    console.log(`Listening on ${events_bus_port}`);
+    console.log(`[EVENT_BUS] Listening on ${events_bus_port}`);
 })
