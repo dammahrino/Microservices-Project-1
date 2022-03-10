@@ -7,17 +7,19 @@ app.use(bodyParser.json());
 
 const events_bus_port = 4005;
 
-app.post('/events', (req, res) => {
-    const event = req.body;
+app.post('/events', (request, response) => {
+    const event = request.body;
+
+    console.log(`${event.type} event received.`)
 
     // Retransmit the event received to the rest of the services
     axios.post('http://localhost:4000/events', event);
     axios.post('http://localhost:4001/events', event);
     axios.post('http://localhost:4002/events', event);
 
-    res.send({ status: 'OK'})
+    response.send({ status: 'OK'})
 });
 
 app.listen(events_bus_port, () => {
-    console.log(`Listening at ${events_bus_port}`);
+    console.log(`Listening on ${events_bus_port}`);
 })

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { randomBytes } = require('crypto');
 const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
 
@@ -19,15 +20,29 @@ app.get('/posts', (request, response) => {
 });
 
 // Route for posting 'posts'
-app.post('/posts', (request, response) => {
+app.post('/posts', async (request, response) => {
     const id = randomBytes(4).toString('hex');
     const { title } = request.body;
 
     posts[id] = { id, title };
 
-    console.log("Received Create Post Request");
+    // We create an Event Emitter everytime a new post is created.
+    await axios.post('http://localhost:4005/events', {
+        type: 'PostCreated',
+        data: {
+            id,
+            title
+        }
+    })
 
     response.status(201).send(posts[id]);
+});
+
+// Adding Post request handler
+app.post('/events', (request, response) => {
+    console.log('Received event ', request.body.type);
+
+    response.send({}).status(200);
 });
 
 

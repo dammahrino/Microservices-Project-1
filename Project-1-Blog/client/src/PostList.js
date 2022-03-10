@@ -43,7 +43,6 @@ const PostList = () => {
             </div>
         );
     });
-    console.log(renderedPosts)
 
     return <div className="d-flex flex-row flex-wrap justify-content-between">
         {renderedPosts}
